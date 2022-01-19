@@ -11,7 +11,8 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .buttonRed()
+        view.backgroundColor = .white
+        setupConstraints()
     }
     
     let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Logo"), contentMode: .scaleAspectFit)
@@ -20,12 +21,37 @@ class AuthViewController: UIViewController {
     let emailLabel = UILabel(text: "Or sign up with")
     let alreadyOnBoardLabel = UILabel(text: "Already on board")
     
+    let googleButton = UIButton(title: "Google", titleColor: .black, backgroudColor: .white, isShadow: true)
     let emailButton = UIButton(title: "Email", titleColor: .white, backgroudColor: .buttonDark(), isShadow: false)
     let loginButton = UIButton(title: "Login", titleColor: .buttonRed(), backgroudColor: .white, isShadow: true)
-    let googleButton = UIButton(title: "Google", titleColor: .black, backgroudColor: .white, isShadow: true)
     
+    private func setupConstraints() {
+
+        let googleView = ButtonFormView(label: googleLabel, button: googleButton)
+        let emailView = ButtonFormView(label: emailLabel, button: emailButton)
+        let loginView = ButtonFormView(label: alreadyOnBoardLabel, button: loginButton)
+        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], axis: .vertical, spacing: 40)
+        
+        view.addSubview(logoImageView)
+        view.addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+        stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 160),
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ])
+        
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 
+// MARK: - SwiftUI
 // Чтобы пользоваться режимом canvas
 import SwiftUI
 

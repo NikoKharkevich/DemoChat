@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		C026825E27987B63006AB0F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026825D27987B63006AB0F8 /* AppDelegate.swift */; };
 		C026826027987B63006AB0F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026825F27987B63006AB0F8 /* SceneDelegate.swift */; };
-		C026826227987B63006AB0F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026826127987B63006AB0F8 /* ViewController.swift */; };
-		C026826527987B63006AB0F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C026826327987B63006AB0F8 /* Main.storyboard */; };
+		C026826227987B63006AB0F8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026826127987B63006AB0F8 /* AuthViewController.swift */; };
 		C026826727987B66006AB0F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C026826627987B66006AB0F8 /* Assets.xcassets */; };
 		C026826A27987B66006AB0F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C026826827987B66006AB0F8 /* LaunchScreen.storyboard */; };
+		C026827227988062006AB0F8 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026827127988062006AB0F8 /* UIButton + Extension.swift */; };
+		C026827427988316006AB0F8 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026827327988316006AB0F8 /* UIFont + Extension.swift */; };
+		C02682762798841E006AB0F8 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02682752798841E006AB0F8 /* UIColor + Extension.swift */; };
+		C026827827988951006AB0F8 /* Label + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026827727988951006AB0F8 /* Label + Extension.swift */; };
+		C026827A27988A1B006AB0F8 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026827927988A1B006AB0F8 /* UIImageView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C026825A27987B63006AB0F8 /* DemoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C026825D27987B63006AB0F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C026825F27987B63006AB0F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C026826127987B63006AB0F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C026826427987B63006AB0F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C026826127987B63006AB0F8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		C026826627987B66006AB0F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C026826927987B66006AB0F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C026826B27987B66006AB0F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C026827127988062006AB0F8 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		C026827327988316006AB0F8 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		C02682752798841E006AB0F8 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		C026827727988951006AB0F8 /* Label + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label + Extension.swift"; sourceTree = "<group>"; };
+		C026827927988A1B006AB0F8 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +66,12 @@
 			children = (
 				C026825D27987B63006AB0F8 /* AppDelegate.swift */,
 				C026825F27987B63006AB0F8 /* SceneDelegate.swift */,
-				C026826127987B63006AB0F8 /* ViewController.swift */,
-				C026826327987B63006AB0F8 /* Main.storyboard */,
+				C026826127987B63006AB0F8 /* AuthViewController.swift */,
+				C026827927988A1B006AB0F8 /* UIImageView + Extension.swift */,
+				C02682752798841E006AB0F8 /* UIColor + Extension.swift */,
+				C026827727988951006AB0F8 /* Label + Extension.swift */,
+				C026827127988062006AB0F8 /* UIButton + Extension.swift */,
+				C026827327988316006AB0F8 /* UIFont + Extension.swift */,
 				C026826627987B66006AB0F8 /* Assets.xcassets */,
 				C026826827987B66006AB0F8 /* LaunchScreen.storyboard */,
 				C026826B27987B66006AB0F8 /* Info.plist */,
@@ -127,7 +139,6 @@
 			files = (
 				C026826A27987B66006AB0F8 /* LaunchScreen.storyboard in Resources */,
 				C026826727987B66006AB0F8 /* Assets.xcassets in Resources */,
-				C026826527987B63006AB0F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +149,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C026826227987B63006AB0F8 /* ViewController.swift in Sources */,
+				C026827427988316006AB0F8 /* UIFont + Extension.swift in Sources */,
+				C026826227987B63006AB0F8 /* AuthViewController.swift in Sources */,
+				C026827827988951006AB0F8 /* Label + Extension.swift in Sources */,
 				C026825E27987B63006AB0F8 /* AppDelegate.swift in Sources */,
+				C026827A27988A1B006AB0F8 /* UIImageView + Extension.swift in Sources */,
+				C02682762798841E006AB0F8 /* UIColor + Extension.swift in Sources */,
 				C026826027987B63006AB0F8 /* SceneDelegate.swift in Sources */,
+				C026827227988062006AB0F8 /* UIButton + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C026826327987B63006AB0F8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C026826427987B63006AB0F8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C026826827987B66006AB0F8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +302,6 @@
 				INFOPLIST_FILE = DemoChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +329,6 @@
 				INFOPLIST_FILE = DemoChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

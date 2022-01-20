@@ -25,6 +25,10 @@ class AuthViewController: UIViewController {
     let emailButton = UIButton(title: "Email", titleColor: .white, backgroudColor: .buttonDark(), isShadow: false)
     let loginButton = UIButton(title: "Login", titleColor: .buttonRed(), backgroudColor: .white, isShadow: true)
     
+}
+
+// MARK: - Setup Constraints
+extension AuthViewController {
     private func setupConstraints() {
 
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)

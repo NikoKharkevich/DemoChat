@@ -22,6 +22,8 @@
 		C02682822799504A006AB0F8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02682812799504A006AB0F8 /* SignUpViewController.swift */; };
 		C02682842799542C006AB0F8 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02682832799542C006AB0F8 /* OneLineTextField.swift */; };
 		C02682862799F207006AB0F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02682852799F207006AB0F8 /* LoginViewController.swift */; };
+		C0DD8872279B2D9200553F29 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD8871279B2D9200553F29 /* SetupProfileViewController.swift */; };
+		C0DD8874279B302A00553F29 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD8873279B302A00553F29 /* AddPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		C02682812799504A006AB0F8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C02682832799542C006AB0F8 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
 		C02682852799F207006AB0F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C0DD8871279B2D9200553F29 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
+		C0DD8873279B302A00553F29 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				C026826127987B63006AB0F8 /* AuthViewController.swift */,
 				C02682812799504A006AB0F8 /* SignUpViewController.swift */,
 				C02682852799F207006AB0F8 /* LoginViewController.swift */,
+				C0DD8871279B2D9200553F29 /* SetupProfileViewController.swift */,
 				C026827C27988D3B006AB0F8 /* Extensions */,
 				C026826627987B66006AB0F8 /* Assets.xcassets */,
 				C026826827987B66006AB0F8 /* LaunchScreen.storyboard */,
@@ -105,6 +110,7 @@
 			children = (
 				C026827D27988ED5006AB0F8 /* ButtonFormView.swift */,
 				C02682832799542C006AB0F8 /* OneLineTextField.swift */,
+				C0DD8873279B302A00553F29 /* AddPhotoView.swift */,
 				C026827B27988D2B006AB0F8 /* UIKit */,
 			);
 			path = Extensions;
@@ -184,8 +190,10 @@
 				C02682822799504A006AB0F8 /* SignUpViewController.swift in Sources */,
 				C026827427988316006AB0F8 /* UIFont + Extension.swift in Sources */,
 				C026826227987B63006AB0F8 /* AuthViewController.swift in Sources */,
+				C0DD8872279B2D9200553F29 /* SetupProfileViewController.swift in Sources */,
 				C026827827988951006AB0F8 /* Label + Extension.swift in Sources */,
 				C026827E27988ED5006AB0F8 /* ButtonFormView.swift in Sources */,
+				C0DD8874279B302A00553F29 /* AddPhotoView.swift in Sources */,
 				C026825E27987B63006AB0F8 /* AppDelegate.swift in Sources */,
 				C026827A27988A1B006AB0F8 /* UIImageView + Extension.swift in Sources */,
 				C02682762798841E006AB0F8 /* UIColor + Extension.swift in Sources */,

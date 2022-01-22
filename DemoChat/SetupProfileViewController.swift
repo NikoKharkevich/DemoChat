@@ -9,7 +9,18 @@ import UIKit
 
 class SetupProfileViewController: UIViewController {
     
-    let fillIMageView = AddPhotoView()
+    let welcomeLabel = UILabel(text: "Set up profile!!", font: .avenir26())
+    let fullNameLabel = UILabel(text: "Full name")
+    let aboutMeLabel = UILabel(text: "About me")
+    let sexLabel = UILabel(text: "Sex")
+    
+    let fullNameTextField = OneLineTextField(font: .avenir20())
+    let aboutMeTextField = OneLineTextField(font: .avenir20())
+    let sexSegmentedControl = UISegmentedControl(first: "Male", second: "Female")
+    
+    let goToChatsButton = UIButton(title: "Got to chats!", titleColor: .white, backgroudColor: .buttonDark(), isShadow: false, cornerRadius: 4)
+    
+    let fullIMageView = AddPhotoView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +34,43 @@ class SetupProfileViewController: UIViewController {
 // MARK: - Setup Constraints
 extension SetupProfileViewController {
     private func setupConstraints() {
-        fillIMageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(fillIMageView)
+        
+        let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField],
+                                            axis: .vertical, spacing: 0)
+        let aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField],
+                                           axis: .vertical, spacing: 0)
+        let sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl],
+                                       axis: .vertical, spacing: 12)
+        
+        goToChatsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        let stackView = UIStackView(arrangedSubviews: [fullNameStackView,
+                                                       aboutMeStackView,
+                                                       sexStackView,
+                                                       goToChatsButton],
+                                    axis: .vertical, spacing: 40)
+
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        fullIMageView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(welcomeLabel)
+        view.addSubview(fullIMageView)
+        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            fillIMageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
-            fillIMageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            fullIMageView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 40),
+            fullIMageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: fullIMageView.bottomAnchor, constant: 100),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
     }
     

@@ -8,6 +8,7 @@
 import UIKit
 
 class OneLineTextField: UITextField {
+    
     convenience init(font: UIFont? = .avenir20()) {
         self.init()
         
@@ -22,10 +23,10 @@ class OneLineTextField: UITextField {
         self.addSubview(bottomView)
         
         NSLayoutConstraint.activate([
-        bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-        bottomView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        bottomView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-        bottomView.heightAnchor.constraint(equalToConstant: 1)
+            bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            bottomView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }

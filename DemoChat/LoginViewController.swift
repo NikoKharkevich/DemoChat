@@ -18,8 +18,8 @@ class LoginViewController: UIViewController {
     
     
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroudColor: .white, isShadow: true)
-    let emailTextField = OneLineTextField()
-    let passwordTextField = OneLineTextField()
+    let emailTextField = OneLineTextField(font: .avenir20())
+    let passwordTextField = OneLineTextField(font: .avenir20())
     
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroudColor: .buttonDark(), isShadow: false)
     

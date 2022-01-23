@@ -33,6 +33,15 @@ class ListViewController: UIViewController {
     //    последовательность в перечислении имеет значение для порядка отображения секций
     enum Section: Int, CaseIterable {
         case waitingChats, activeChats
+        
+        func description() -> String {
+            switch self {
+            case .waitingChats:
+                return "Waiting chats"
+            case .activeChats:
+                return "Active chats"
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -61,7 +70,11 @@ class ListViewController: UIViewController {
         collectionView.backgroundColor = .mainWhite()
         view.addSubview(collectionView)
         
+        collectionView.register(SectionHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: SectionHeader.reuseId)
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
+        collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
     }
     
     private func reloadData() {
@@ -84,11 +97,23 @@ extension ListViewController {
             }
             switch section {
             case .waitingChats:
-                return self.configure(cellType: ActiveChatCell.self, with: chat, for: indexPath)
+                return self.configure(cellType: WaitingChatCell.self, with: chat, for: indexPath)
             case .activeChats:
                 return self.configure(cellType: ActiveChatCell.self, with: chat, for: indexPath)
             }
         })
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
+                fatalError("Can not create new section header")
+            }
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown ssection kind ")
+            }
+            sectionHeader.configurate(text: section.description(), font: .laoSangamMN20(), textColor: .sectionHeaderTintColor())
+            return sectionHeader
+        }
     }
     
     private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: MChat, for indexPath: IndexPath) -> T {
@@ -117,6 +142,10 @@ extension ListViewController {
                 return self.createActiveChats()
             }
         }
+        // устанавливаем специальные отступы между секциями для лучшей читаемости хедера
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
         return layout
     }
     
@@ -139,7 +168,9 @@ extension ListViewController {
         
         // тип прокручивания вправо
         section.orthogonalScrollingBehavior = .continuous
+        section.boundarySupplementaryItems = [createSectionHeader()]
         return section
+        
     }
     
     private func createActiveChats() -> NSCollectionLayoutSection {
@@ -154,7 +185,17 @@ extension ListViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 8
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
+        section.boundarySupplementaryItems = [createSectionHeader()]
         return section
+    }
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        // boundarySupplementaryItems принимает массив с хедерами и футерами
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
+        return sectionHeader
     }
 }
 

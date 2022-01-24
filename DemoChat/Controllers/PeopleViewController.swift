@@ -179,16 +179,12 @@ import SwiftUI
 struct PeopleViewControllerProvider: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
+    }    
     struct ContainerView: UIViewControllerRepresentable {
-        
         let tabBarVC = MainTabBarController()
-        
         func makeUIViewController(context: Context) -> some UIViewController {
             return tabBarVC
         }
-        
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         }
     }

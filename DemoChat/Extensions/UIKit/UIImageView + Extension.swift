@@ -15,3 +15,12 @@ extension UIImageView {
         self.contentMode = contentMode
     }
 }
+
+// для изменения цвета кнопки или смайла в leftView textFiled
+extension UIImageView {
+    func setupColor(color: UIColor) {
+        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+        self.image = templateImage
+        self.tintColor = color
+    }
+}

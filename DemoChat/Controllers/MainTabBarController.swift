@@ -13,7 +13,6 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         setupTabBarController()
-
     }
     
     private func generateNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
@@ -27,15 +26,18 @@ class MainTabBarController: UITabBarController {
         let listViewController = ListViewController()
         let peopleViewController = PeopleViewController()
         
+        // толщина рамок изображения
         let boldImageConfiguration = UIImage.SymbolConfiguration(weight: .medium)
         
         tabBar.tintColor = #colorLiteral(red: 0.5568627451, green: 0.3529411765, blue: 0.968627451, alpha: 1)
         let peopleImage = UIImage(systemName: "person.2", withConfiguration: boldImageConfiguration)!
         let conversationImage = UIImage(systemName: "bubble.left.and.bubble.right", withConfiguration: boldImageConfiguration)!
         
+        // порядок в массиве имеет значение для отображения
         viewControllers = [
-            generateNavigationController(rootViewController: listViewController, title: "Conversations", image: conversationImage),
-            generateNavigationController(rootViewController: peopleViewController, title: "People", image: peopleImage)]
+            generateNavigationController(rootViewController: peopleViewController, title: "People", image: peopleImage),
+            generateNavigationController(rootViewController: listViewController, title: "Conversations", image: conversationImage)
+        ]
     }
     
 }

@@ -8,21 +8,155 @@
 import UIKit
 
 class PeopleViewController: UIViewController {
+    
+    var collectionView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<Section, MUser>!
+    
+    let users = Bundle.main.decode([MUser].self, from: "users.json")
+    
+    enum Section: Int, CaseIterable {
+        case users
+        func description(usersCount: Int) -> String {
+            switch self {
+            case .users:
+                return "\(usersCount) people nearby"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
         setupSearchBar()
+        setupCollectionView()
+        createDataSource()
+        reloadData()
     }
     
     private func setupSearchBar() {
         navigationController?.navigationBar.barTintColor = .mainWhite()
         navigationController?.navigationBar.shadowImage = UIImage()
+        
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+    }
+    
+    private func setupCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .mainWhite()
+        view.addSubview(collectionView)
+        
+        collectionView.register(SectionHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: SectionHeader.reuseId)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+    }
+    
+    private func createUsersSection() -> NSCollectionLayoutSection {
+        
+        // fractWidth(1) - растягивается по свей длине группы
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        // heightDimension: .fractionalWidth(0.6) потому что высота группу зависит от ширины секции и будет 0,5(для картинки) + 0,1(для лейбла)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let spacing = CGFloat(15)
+        group.interItemSpacing = .fixed(spacing)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
+        
+        let sectionHeader = createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        return section
+    }
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        // boundarySupplementaryItems принимает массив с хедерами и футерами
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
+        return sectionHeader
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
+        
+        // две строчки которые добавляют ячейки в нашу коллекцию
+        snapshot.appendSections([.users])
+        snapshot.appendItems(users, toSection: .users)
+        
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+
+// MARK: - Setup layout
+extension PeopleViewController {
+    
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+            
+            guard let section = Section(rawValue: sectionIndex) else {
+                fatalError("Unknown section kind")
+            }
+            switch section {
+            case .users:
+                return self.createUsersSection()
+            }
+        }
+        // устанавливаем специальные отступы между секциями для лучшей читаемости хедера
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
+        return layout
+    }
+}
+
+
+//MARK: - Data Source
+extension PeopleViewController {
+    
+    private func createDataSource() {
+        
+        // передаем два параметра Generics
+        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView, cellProvider: { collectionView, indexPath, user in
+            
+            // проверяем есть ли секция
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown section kind")
+            }
+            
+            switch section {
+            case .users:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
+                cell.backgroundColor = .systemCyan
+                return cell
+            }
+        })
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
+                fatalError("Can not create new section header") }
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown ssection kind ") }
+            
+            let items = self.dataSource.snapshot().itemIdentifiers(inSection: .users)
+            // users.count берем из dataSource
+            sectionHeader.configurate(text: section.description(usersCount: items.count), font: .systemFont(ofSize: 36, weight: .light), textColor: .label)
+            return sectionHeader
+        }
     }
 }
 

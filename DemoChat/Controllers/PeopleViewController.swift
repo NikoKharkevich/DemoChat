@@ -31,7 +31,8 @@ class PeopleViewController: UIViewController {
         setupSearchBar()
         setupCollectionView()
         createDataSource()
-        reloadData()
+        // reloadData принимает опциональный стринг для поиска текста, тут ее вызываем с nil
+        reloadData(with: nil)
     }
     
     private func setupSearchBar() {
@@ -89,12 +90,17 @@ class PeopleViewController: UIViewController {
         return sectionHeader
     }
     
-    private func reloadData() {
+    // для работы поиска необходимо передавать в reloadData искомый текст, потом эту функцию вызываем в UISearchBarDelegate
+    private func reloadData(with searchText: String?) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
         
+        let filtered = users.filter { user in
+            user.contains(filter: searchText)
+        }
         // две строчки которые добавляют ячейки в нашу коллекцию
         snapshot.appendSections([.users])
-        snapshot.appendItems(users, toSection: .users)
+        // для фильтровки при поиске передаем не просто users, а filtered
+        snapshot.appendItems(filtered, toSection: .users)
         
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -161,7 +167,7 @@ extension PeopleViewController {
 // MARK: - UISearchBarDelegate
 extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        reloadData(with: searchText)
     }
 }
 

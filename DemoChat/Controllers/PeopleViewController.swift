@@ -55,7 +55,7 @@ class PeopleViewController: UIViewController {
         collectionView.register(SectionHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionHeader.reuseId)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+        collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
     }
     
     private func createUsersSection() -> NSCollectionLayoutSection {
@@ -65,7 +65,7 @@ class PeopleViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         // heightDimension: .fractionalWidth(0.6) потому что высота группу зависит от ширины секции и будет 0,5(для картинки) + 0,1(для лейбла)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let spacing = CGFloat(15)
         group.interItemSpacing = .fixed(spacing)
@@ -134,14 +134,11 @@ extension PeopleViewController {
             
             // проверяем есть ли секция
             guard let section = Section(rawValue: indexPath.section) else {
-                fatalError("Unknown section kind")
-            }
+                fatalError("Unknown section kind") }
             
             switch section {
             case .users:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
-                cell.backgroundColor = .systemCyan
-                return cell
+                return self.configure(collectionView: collectionView, cellType: UserCell.self, with: user, for: indexPath)
             }
         })
         

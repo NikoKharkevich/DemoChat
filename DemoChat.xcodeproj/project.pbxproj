@@ -38,6 +38,7 @@
 		C08B7FD2279F04E000F88BD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B7FD1279F04E000F88BD6 /* ProfileViewController.swift */; };
 		C08B7FD4279F0B6F00F88BD6 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B7FD3279F0B6F00F88BD6 /* InsertableTextField.swift */; };
 		C08B7FD6279F102F00F88BD6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B7FD5279F102F00F88BD6 /* UIView + Extension.swift */; };
+		C08B7FD8279F16A000F88BD6 /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B7FD7279F16A000F88BD6 /* ChatRequestViewController.swift */; };
 		C0DD8872279B2D9200553F29 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD8871279B2D9200553F29 /* SetupProfileViewController.swift */; };
 		C0DD8874279B302A00553F29 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD8873279B302A00553F29 /* AddPhotoView.swift */; };
 		C0DD8876279C874700553F29 /* SegmentedControl + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD8875279C874700553F29 /* SegmentedControl + Extension.swift */; };
@@ -80,6 +81,7 @@
 		C08B7FD1279F04E000F88BD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C08B7FD3279F0B6F00F88BD6 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
 		C08B7FD5279F102F00F88BD6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		C08B7FD7279F16A000F88BD6 /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
 		C0DD8871279B2D9200553F29 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		C0DD8873279B302A00553F29 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		C0DD8875279C874700553F29 /* SegmentedControl + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SegmentedControl + Extension.swift"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				C0DD8877279C970000553F29 /* ListViewController.swift */,
 				C0DD887D279C99B200553F29 /* PeopleViewController.swift */,
 				C08B7FD1279F04E000F88BD6 /* ProfileViewController.swift */,
+				C08B7FD7279F16A000F88BD6 /* ChatRequestViewController.swift */,
 				C08B7FC5279EC82100F88BD6 /* Header */,
 				C08B7FB9279DC18A00F88BD6 /* Cell */,
 			);
@@ -312,6 +315,7 @@
 				C026826227987B63006AB0F8 /* AuthViewController.swift in Sources */,
 				C08B7FD2279F04E000F88BD6 /* ProfileViewController.swift in Sources */,
 				C08B7FB8279D65CE00F88BD6 /* Bundle-Decodable.swift in Sources */,
+				C08B7FD8279F16A000F88BD6 /* ChatRequestViewController.swift in Sources */,
 				C0DD8872279B2D9200553F29 /* SetupProfileViewController.swift in Sources */,
 				C026827827988951006AB0F8 /* Label + Extension.swift in Sources */,
 				C026827E27988ED5006AB0F8 /* ButtonFormView.swift in Sources */,

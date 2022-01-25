@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PeopleViewController: UIViewController {
     
@@ -33,6 +34,25 @@ class PeopleViewController: UIViewController {
         createDataSource()
         // reloadData принимает опциональный стринг для поиска текста, тут ее вызываем с nil
         reloadData(with: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(signOut))
+    }
+    
+    @objc private func signOut() {
+        let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let signOut = UIAlertAction(title: "SingOut", style: .destructive) { _ in
+            // пытаемся выйти из аккаунта через блок do catch т.к. signOut() throws
+            do {
+                try Auth.auth().signOut()
+                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = AuthViewController()
+            } catch {
+                print("Error signing out: \(error.localizedDescription)")
+            }
+        }
+        ac.addAction(cancel)
+        ac.addAction(signOut)
+        present(ac, animated: true, completion: nil)
     }
     
     private func setupSearchBar() {

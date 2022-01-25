@@ -11,6 +11,8 @@ import SwiftUI
 enum UserErrors {
     case notFilled
     case photoNotExists
+    case cannotGetUserInfo
+    case cannotUnwrapToMuser
 }
 
 extension UserErrors: LocalizedError {
@@ -20,6 +22,10 @@ extension UserErrors: LocalizedError {
             return NSLocalizedString("Заполните все поля", comment: "")
         case .photoNotExists:
             return NSLocalizedString("Пользователь не выбрал фотографию", comment: "")
+        case .cannotGetUserInfo:
+            return NSLocalizedString("Невозможно загрузить информацию о пользователе", comment: "")
+        case .cannotUnwrapToMuser:
+            return NSLocalizedString("Невозможно конвертировать Muser из User", comment: "")
         }
     }
 }

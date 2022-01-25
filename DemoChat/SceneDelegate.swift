@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,7 +18,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = AuthViewController()
+        
+        // делаем проверку есть ли в базе данные о пользователе. Если нет то он попадает на Auth. Если есть то он попадает на свой экран
+        if let user = Auth.auth().currentUser {
+            FirestoreService.shared.getUserData(user: user) { result in
+                switch result {
+                case .success(let muser):
+                    self.window?.rootViewController = MainTabBarController()
+                case .failure(let error):
+                    self.window?.rootViewController = AuthViewController()
+                }
+            }
+        } else {
+            window?.rootViewController = AuthViewController()
+        }
+        
         window?.makeKeyAndVisible()
     }
 

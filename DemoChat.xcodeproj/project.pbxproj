@@ -47,6 +47,7 @@
 		C0DD8878279C970000553F29 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD8877279C970000553F29 /* ListViewController.swift */; };
 		C0DD887C279C996600553F29 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD887B279C996600553F29 /* MainTabBarController.swift */; };
 		C0DD887E279C99B200553F29 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD887D279C99B200553F29 /* PeopleViewController.swift */; };
+		C0DEF5AA279FF19F00678624 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5A9279FF19F00678624 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		C0DD8877279C970000553F29 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C0DD887B279C996600553F29 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C0DD887D279C99B200553F29 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		C0DEF5A9279FF19F00678624 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F1E40CE22E3F0CDDA4DD38B8 /* Pods-DemoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoChat.debug.xcconfig"; path = "Target Support Files/Pods-DemoChat/Pods-DemoChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,7 +116,6 @@
 				F1E40CE22E3F0CDDA4DD38B8 /* Pods-DemoChat.debug.xcconfig */,
 				7278C30C0DF667016F942548 /* Pods-DemoChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,7 +150,7 @@
 			children = (
 				C026825D27987B63006AB0F8 /* AppDelegate.swift */,
 				C026825F27987B63006AB0F8 /* SceneDelegate.swift */,
-				C08B7FCC279EC9D400F88BD6 /* Models */,
+				C0DEF5A8279FF17100678624 /* Services */,
 				C0DD887A279C994800553F29 /* Controllers */,
 				C0DD8879279C992900553F29 /* Signin&Auth */,
 				C08B7FC2279DD7B100F88BD6 /* Protocols */,
@@ -253,6 +254,15 @@
 				C08B7FB9279DC18A00F88BD6 /* Cell */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C0DEF5A8279FF17100678624 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C08B7FCC279EC9D400F88BD6 /* Models */,
+				C0DEF5A9279FF19F00678624 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +414,7 @@
 				C02682762798841E006AB0F8 /* UIColor + Extension.swift in Sources */,
 				C026826027987B63006AB0F8 /* SceneDelegate.swift in Sources */,
 				C026827227988062006AB0F8 /* UIButton + Extension.swift in Sources */,
+				C0DEF5AA279FF19F00678624 /* AuthService.swift in Sources */,
 				C02682862799F207006AB0F8 /* LoginViewController.swift in Sources */,
 				C026828027989911006AB0F8 /* StackView + Extension.swift in Sources */,
 			);

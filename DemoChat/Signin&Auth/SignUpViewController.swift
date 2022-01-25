@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController {
     let signUpButton = UIButton(title: "Sign Up", titleColor: .white, backgroudColor: .buttonDark(), cornerRadius: 4)
     
     let loginButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Login", for: .normal)
         button.setTitleColor(.buttonRed(), for: .normal)
         button.titleLabel?.font = .avenir20()
@@ -35,6 +35,23 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         view.backgroundColor = .white
+        
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func signUpButtonTapped() {
+        print(#function)
+        AuthService.shared.register(email: emailTextField.text,
+                                    password: passwordTextField.text,
+                                    confirmPassword: confirmPasswordTextField.text) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Success!", and: "You have been registered")
+                print(user.email)
+            case .failure(let error):
+                self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -53,7 +70,7 @@ extension SignUpViewController {
                                     spacing: 40)
         
         let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel,
-                                                            loginButton],
+                                                             loginButton],
                                           axis: .horizontal,
                                           spacing: 40)
         bottomStackView.alignment = .firstBaseline
@@ -106,5 +123,17 @@ struct SignUpViewControllerProvider: PreviewProvider {
         
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         }
+    }
+}
+
+
+extension UIViewController {
+    
+    func showAlert(with title: String, and message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
 }

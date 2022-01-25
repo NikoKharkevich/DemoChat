@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroudColor: .buttonDark(), isShadow: false)
     
     let signInButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.buttonRed(), for: .normal)
         button.titleLabel?.font = .avenir20()
@@ -37,6 +37,20 @@ class LoginViewController: UIViewController {
         setupConstraints()
         view.backgroundColor = .white
         googleButton.customizeGoogleButton()
+        
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func loginButtonTapped() {
+        print(#function)
+        AuthService.shared.login(email: emailTextField.text!, password: passwordTextField.text!) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Success!", and: "Welcome back")
+            case .failure(let error):
+                self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -49,8 +63,8 @@ extension LoginViewController {
                                          axis: .vertical,
                                          spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
-                                         axis: .vertical,
-                                         spacing: 0)
+                                            axis: .vertical,
+                                            spacing: 0)
         
         loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         

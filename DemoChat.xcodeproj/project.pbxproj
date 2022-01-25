@@ -48,6 +48,8 @@
 		C0DD887C279C996600553F29 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD887B279C996600553F29 /* MainTabBarController.swift */; };
 		C0DD887E279C99B200553F29 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD887D279C99B200553F29 /* PeopleViewController.swift */; };
 		C0DEF5AA279FF19F00678624 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5A9279FF19F00678624 /* AuthService.swift */; };
+		C0DEF5AC27A0193C00678624 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5AB27A0193C00678624 /* Validators.swift */; };
+		C0DEF5AE27A01C0500678624 /* AuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5AD27A01C0500678624 /* AuthErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		C0DD887B279C996600553F29 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C0DD887D279C99B200553F29 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		C0DEF5A9279FF19F00678624 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C0DEF5AB27A0193C00678624 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		C0DEF5AD27A01C0500678624 /* AuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrors.swift; sourceTree = "<group>"; };
 		F1E40CE22E3F0CDDA4DD38B8 /* Pods-DemoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoChat.debug.xcconfig"; path = "Target Support Files/Pods-DemoChat/Pods-DemoChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,7 @@
 				C0DD8879279C992900553F29 /* Signin&Auth */,
 				C08B7FC2279DD7B100F88BD6 /* Protocols */,
 				C026827C27988D3B006AB0F8 /* Extensions */,
+				C0DEF5AF27A0218900678624 /* Helpers */,
 				C026826627987B66006AB0F8 /* Assets.xcassets */,
 				C026826827987B66006AB0F8 /* LaunchScreen.storyboard */,
 				C08B7FD9279F1F4D00F88BD6 /* GoogleService-Info.plist */,
@@ -263,6 +268,15 @@
 				C0DEF5A9279FF19F00678624 /* AuthService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C0DEF5AF27A0218900678624 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C0DEF5AB27A0193C00678624 /* Validators.swift */,
+				C0DEF5AD27A01C0500678624 /* AuthErrors.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +405,7 @@
 				C02682822799504A006AB0F8 /* SignUpViewController.swift in Sources */,
 				C08B7FBB279DC19D00F88BD6 /* ActiveChatCell.swift in Sources */,
 				C08B7FC9279EC94C00F88BD6 /* MUser.swift in Sources */,
+				C0DEF5AC27A0193C00678624 /* Validators.swift in Sources */,
 				C026827427988316006AB0F8 /* UIFont + Extension.swift in Sources */,
 				C08B7FBD279DD07A00F88BD6 /* GradientVIew.swift in Sources */,
 				C08B7FD4279F0B6F00F88BD6 /* InsertableTextField.swift in Sources */,
@@ -416,6 +431,7 @@
 				C026827227988062006AB0F8 /* UIButton + Extension.swift in Sources */,
 				C0DEF5AA279FF19F00678624 /* AuthService.swift in Sources */,
 				C02682862799F207006AB0F8 /* LoginViewController.swift in Sources */,
+				C0DEF5AE27A01C0500678624 /* AuthErrors.swift in Sources */,
 				C026828027989911006AB0F8 /* StackView + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

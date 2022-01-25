@@ -91,7 +91,7 @@ extension LoginViewController {
         view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
@@ -102,7 +102,7 @@ extension LoginViewController {
         ])
         
         NSLayoutConstraint.activate([
-            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 60),
+            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])

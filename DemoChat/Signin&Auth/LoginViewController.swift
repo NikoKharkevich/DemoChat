@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol AuthNavigationDelegate: AnyObject {
+    func toLoginVC()
+    func toSignUpVC()
+}
+
 class LoginViewController: UIViewController {
     
     let welcomeLabel = UILabel(text: "Welcome back!", font: .avenir26())
@@ -23,7 +28,7 @@ class LoginViewController: UIViewController {
     
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroudColor: .buttonDark(), isShadow: false)
     
-    let signInButton: UIButton = {
+    let signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.buttonRed(), for: .normal)
@@ -32,6 +37,8 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    weak var delegate: AuthNavigationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
@@ -39,6 +46,7 @@ class LoginViewController: UIViewController {
         googleButton.customizeGoogleButton()
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
     @objc private func loginButtonTapped() {
@@ -46,12 +54,24 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text!, password: passwordTextField.text!) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Success!", and: "Welcome back")
+                self.showAlert(with: "Success!", and: "Welcome back") {
+                self.present(SetupProfileViewController(), animated: true, completion: nil)
+                }
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
         }
     }
+    
+    @objc private func signUpButtonTapped() {
+        print(#function)
+        // по нажатию на кнопу не просто появляется экран через обычный present а должен пропасть предыдущий VC чтобы не было нагромождения
+        
+        dismiss(animated: true) {
+            self.delegate?.toSignUpVC()
+        }
+    }
+
 }
 
 // MARK: - Setup Constraints
@@ -77,7 +97,7 @@ extension LoginViewController {
                                     axis: .vertical,
                                     spacing: 40)
         
-        let bottomStackView = UIStackView(arrangedSubviews: [needAnAccountLabel, signInButton],
+        let bottomStackView = UIStackView(arrangedSubviews: [needAnAccountLabel, signUpButton],
                                           axis: .horizontal,
                                           spacing: 40)
         bottomStackView.alignment = .firstBaseline
@@ -96,7 +116,7 @@ extension LoginViewController {
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 100),
+            stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 60),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])

@@ -28,8 +28,9 @@ class SignUpViewController: UIViewController {
         button.titleLabel?.font = .avenir20()
         button.contentHorizontalAlignment = .leading
         return button
-        
     }()
+    
+    weak var delegate: AuthNavigationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
     @objc private func signUpButtonTapped() {
@@ -46,12 +48,21 @@ class SignUpViewController: UIViewController {
                                     confirmPassword: confirmPasswordTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Success!", and: "You have been registered")
-                print(user.email)
+                self.showAlert(with: "Success!", and: "You have been registered") {
+                    self.present(SetupProfileViewController(), animated: true, completion: nil)
+                }
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
         }
+    }
+    
+    @objc private func loginButtonTapped() {
+        print(#function)
+        dismiss(animated: true) {
+            self.delegate?.toLoginVC()
+        }
+        
     }
 }
 
@@ -89,7 +100,7 @@ extension SignUpViewController {
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 100),
+            stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 160),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
@@ -129,10 +140,13 @@ struct SignUpViewControllerProvider: PreviewProvider {
 
 extension UIViewController {
     
-    func showAlert(with title: String, and message: String) {
+    func showAlert(with title: String, and message: String, completion: @escaping () -> Void = {}) {
+        // completion возвращает void  и по умаолчанию пустой
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let ok = UIAlertAction(title: "OK", style: .default) { (_) in
+            completion()
+        }
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }

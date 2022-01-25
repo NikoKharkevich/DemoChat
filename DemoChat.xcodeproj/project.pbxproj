@@ -50,6 +50,9 @@
 		C0DEF5AA279FF19F00678624 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5A9279FF19F00678624 /* AuthService.swift */; };
 		C0DEF5AC27A0193C00678624 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5AB27A0193C00678624 /* Validators.swift */; };
 		C0DEF5AE27A01C0500678624 /* AuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5AD27A01C0500678624 /* AuthErrors.swift */; };
+		C0DEF5B127A05D5000678624 /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5B027A05D5000678624 /* AuthNavigationDelegate.swift */; };
+		C0DEF5B327A061CE00678624 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5B227A061CE00678624 /* FirestoreService.swift */; };
+		C0DEF5B527A066EB00678624 /* UserErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEF5B427A066EB00678624 /* UserErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +102,9 @@
 		C0DEF5A9279FF19F00678624 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C0DEF5AB27A0193C00678624 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		C0DEF5AD27A01C0500678624 /* AuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrors.swift; sourceTree = "<group>"; };
+		C0DEF5B027A05D5000678624 /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
+		C0DEF5B227A061CE00678624 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		C0DEF5B427A066EB00678624 /* UserErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserErrors.swift; sourceTree = "<group>"; };
 		F1E40CE22E3F0CDDA4DD38B8 /* Pods-DemoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoChat.debug.xcconfig"; path = "Target Support Files/Pods-DemoChat/Pods-DemoChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				C08B7FC0279DD78800F88BD6 /* SelfConfigurationCell.swift */,
+				C0DEF5B027A05D5000678624 /* AuthNavigationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -266,6 +273,7 @@
 			children = (
 				C08B7FCC279EC9D400F88BD6 /* Models */,
 				C0DEF5A9279FF19F00678624 /* AuthService.swift */,
+				C0DEF5B227A061CE00678624 /* FirestoreService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 			children = (
 				C0DEF5AB27A0193C00678624 /* Validators.swift */,
 				C0DEF5AD27A01C0500678624 /* AuthErrors.swift */,
+				C0DEF5B427A066EB00678624 /* UserErrors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -409,8 +418,11 @@
 				C026827427988316006AB0F8 /* UIFont + Extension.swift in Sources */,
 				C08B7FBD279DD07A00F88BD6 /* GradientVIew.swift in Sources */,
 				C08B7FD4279F0B6F00F88BD6 /* InsertableTextField.swift in Sources */,
+				C0DEF5B127A05D5000678624 /* AuthNavigationDelegate.swift in Sources */,
+				C0DEF5B527A066EB00678624 /* UserErrors.swift in Sources */,
 				C0DD887E279C99B200553F29 /* PeopleViewController.swift in Sources */,
 				C026826227987B63006AB0F8 /* AuthViewController.swift in Sources */,
+				C0DEF5B327A061CE00678624 /* FirestoreService.swift in Sources */,
 				C08B7FD2279F04E000F88BD6 /* ProfileViewController.swift in Sources */,
 				C08B7FB8279D65CE00F88BD6 /* Bundle-Decodable.swift in Sources */,
 				C08B7FD8279F16A000F88BD6 /* ChatRequestViewController.swift in Sources */,

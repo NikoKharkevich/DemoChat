@@ -28,6 +28,10 @@ class SetupProfileViewController: UIViewController {
     init (currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
+        
+        if let username = currentUser.displayName {
+            fullNameTextField.text = username
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -40,6 +44,14 @@ class SetupProfileViewController: UIViewController {
         view.backgroundColor = .white
         setupConstraints()
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
+        fullIMageView.plusButon.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func plusButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     @objc private func goToChatsButtonTapped() {
@@ -47,13 +59,17 @@ class SetupProfileViewController: UIViewController {
             id: currentUser.uid,
             email: currentUser.email!,
             userName: fullNameTextField.text,
-            avatarImageString: "",
+            avatarImage: fullIMageView.circleImageView.image,
             description: aboutMeTextField.text,
             sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result  in
                 switch result {
                 case .success(let muser):
-                    self.showAlert(with: "Успешно", and: "Приятного общения")
-                    print(muser)
+                    self.showAlert(with: "Успешно", and: "Приятного общения") {
+                        // модальная презентация тут не подходит, нужен fullScreen
+                        let mainTabBar = MainTabBarController(currentUser: muser)
+                        mainTabBar.modalPresentationStyle = .fullScreen
+                        self.present(mainTabBar, animated: true, completion: nil)
+                    }
                 case .failure(let error):
                     self.showAlert(with: "Ошибка", and: error.localizedDescription)
                 }
@@ -79,7 +95,7 @@ extension SetupProfileViewController {
                                                        sexStackView,
                                                        goToChatsButton],
                                     axis: .vertical, spacing: 40)
-
+        
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         fullIMageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -105,6 +121,17 @@ extension SetupProfileViewController {
         ])
     }
     
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension SetupProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        fullIMageView.circleImageView.image = image
+    }
 }
 
 

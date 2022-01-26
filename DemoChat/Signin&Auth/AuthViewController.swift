@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class AuthViewController: UIViewController {
     
@@ -85,6 +86,7 @@ extension AuthViewController: AuthNavigationDelegate {
         present(signUpVC, animated: true, completion: nil)
     }
 }
+
 
 // MARK: - SwiftUI
 // Чтобы пользоваться режимом canvas

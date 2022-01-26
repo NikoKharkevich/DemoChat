@@ -29,6 +29,19 @@ class ListViewController: UIViewController {
         }
     }
     
+    private let currentUser: MUser
+    
+    init (currentUser: MUser) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+        // добавляем в шапку экрана поле с именем пользователя
+        title = currentUser.userName
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

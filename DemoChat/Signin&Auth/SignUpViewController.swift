@@ -141,7 +141,7 @@ struct SignUpViewControllerProvider: PreviewProvider {
 extension UIViewController {
     
     func showAlert(with title: String, and message: String, completion: @escaping () -> Void = {}) {
-        // completion возвращает void  и по умаолчанию пустой
+        // completion возвращает void  и по умолчанию пустой
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { (_) in

@@ -60,7 +60,7 @@ struct MUser: Hashable, Decodable {
         return lhs.id == rhs.id
     }
     
-    // делаем спец функцию для фильра юзеров при поиске
+    // делаем спец функцию для фильтра юзеров при поиске
     func contains(filter: String?) -> Bool {
         guard let filter = filter else { return true }
         if filter.isEmpty { return true }
